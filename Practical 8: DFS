@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+int visited[10];
+
+void dfs(int graph[10][10], int n, int node) {
+    cout << node << " ";
+    visited[node] = 1;
+
+    for(int i=0;i<n;i++) {
+        if(graph[node][i] && !visited[i]) {
+            dfs(graph, n, i);
+        }
+    }
+}
+
+int main() {
+    int n;
+    cin >> n;
+
+    int graph[10][10];
+
+    for(int i=0;i<n;i++)
+        for(int j=0;j<n;j++)
+            cin >> graph[i][j];
+
+    dfs(graph, n, 0);
+    return 0;
+}
